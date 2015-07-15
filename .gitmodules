@@ -1,0 +1,3 @@
+[submodule "1.10-PerlinLandscape/ofxMSAPerlin"]
+	path = 1.10-PerlinLandscape/ofxMSAPerlin
+	url = git@github.com:memo/ofxMSAPerlin.git
