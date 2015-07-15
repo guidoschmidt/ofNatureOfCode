@@ -1,11 +1,11 @@
-project(ofApp)
-set(APP ofApp)
+project(ofxNOC-1.1-RandomWalker)
+set(APP ofxNOC-1.1-RandomWalker)
 
 cmake_minimum_required(VERSION 2.8)
 
 include(../../of/openFrameworks.cmake)
 
-ofxaddon(../ofxGui)
+ofxaddon(ofxGui)
 
 set(SOURCES
     src/main.cpp

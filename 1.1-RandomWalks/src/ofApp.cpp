@@ -1,85 +1,171 @@
 #include "ofApp.h"
 
-void ofApp::setup()
-{
+//--------------------------------------------------------------
+void ofApp::setup(){
+	ofSetBackgroundAuto(false);
+	walker = new RandomWalker();
 }
 
-void ofApp::update()
-{
+//--------------------------------------------------------------
+void ofApp::update(){
+
 }
 
-void ofApp::draw()
-{
+float monteCarlo() {
+	while(true) {
+		float random01 = ofRandom(1.0f);
+		float probability = random01;
+		float random02 = ofRandom(1.0f);
+
+		if(random02 < probability) {
+			return random01;
+		}
+	}
 }
 
-void ofApp::exit()
-{
+//--- Different walking strategies -----------------------------
+void strategy01(int& m_x, int& m_y) {
+	//--- Weight 4 directionis different ---
+	int probability = rand() % 100;
+	if(probability < 40) {
+		m_x++;
+	}
+	else if(probability < 60) {
+		m_x--;
+	}
+	else if(probability < 80) {
+		m_y++;
+	}
+	else {
+		m_y--;
+	}
 }
 
-void ofApp::keyPressed(ofKeyEventArgs& key)
-{
+void strategy02(int& m_x, int& m_y) {
+	//--- Weight 8 directionis different ---
+	int probability = rand() % 100;
+	if(probability < 10) {
+		m_x++;
+		m_y++;
+	}
+	else if(probability < 30) {
+		m_x--;
+		m_y--;
+	}
+	else if(probability < 50) {
+		m_x--;
+		m_y++;
+	}
+	else if(probability < 60) {
+		m_x++;
+		m_y--;
+	}
+	else if(probability < 70) {
+		m_x++;
+	}
+	else if(probability < 80) {
+		m_x--;
+	}
+	else if(probability < 95) {
+		m_y++;
+	}
+	else {
+		m_y--;
+	}
 }
 
-void ofApp::keyReleased(ofKeyEventArgs& key)
-{
+void strategy03(int& m_x, int& m_y) {
+	//--- Use monte carlo method ---
+	float probability = monteCarlo();
+	if(probability < 0.1f) {
+		m_x++;
+		m_y++;
+	}
+	else if(probability < 0.3f) {
+		m_x--;
+		m_y--;
+	}
+	else if(probability < 0.50f) {
+		m_x--;
+		m_y++;
+	}
+	else if(probability < 0.60f) {
+		m_x++;
+		m_y--;
+	}
+	else if(probability < 0.70f) {
+		m_x++;
+	}
+	else if(probability < 0.80f) {
+		m_x--;
+	}
+	else if(probability < 0.95f) {
+		m_y++;
+	}
+	else {
+		m_y--;
+	}
 }
 
-void ofApp::mouseMoved(ofMouseEventArgs& mouse)
-{
+
+void strategy04(int& m_x, int &m_y) {
+	float stepsize = ofRandom(0, 2);
+
+	float stepX = ofRandom(-(stepsize*stepsize), stepsize*stepsize);
+	float stepY = ofRandom(-(stepsize*stepsize), stepsize*stepsize);
+
+	m_x += stepX;
+	m_y += stepY;
 }
 
-void ofApp::mouseDragged(ofMouseEventArgs& mouse)
-{
+
+//--------------------------------------------------------------
+void ofApp::draw(){
+	walker->step(&strategy04);
+	walker->draw(mouseX, mouseY);
 }
 
-void ofApp::mousePressed(ofMouseEventArgs& mouse)
-{
+//--------------------------------------------------------------
+void ofApp::keyPressed(int key){
+
 }
 
-void ofApp::mouseReleased(ofMouseEventArgs& mouse)
-{
+//--------------------------------------------------------------
+void ofApp::keyReleased(int key){
+
 }
 
-void ofApp::mouseScrolled(ofMouseEventArgs& mouse)
-{
+//--------------------------------------------------------------
+void ofApp::mouseMoved(int x, int y ){
+
 }
 
-void ofApp::mouseEntered(ofMouseEventArgs& mouse)
-{
+//--------------------------------------------------------------
+void ofApp::mouseDragged(int x, int y, int button){
+
 }
 
-void ofApp::mouseExited(ofMouseEventArgs& mouse)
-{
+//--------------------------------------------------------------
+void ofApp::mousePressed(int x, int y, int button){
+
 }
 
-void ofApp::touchDown(ofTouchEventArgs& touch)
-{
+//--------------------------------------------------------------
+void ofApp::mouseReleased(int x, int y, int button){
+
 }
 
-void ofApp::touchMoved(ofTouchEventArgs& touch)
-{
+//--------------------------------------------------------------
+void ofApp::windowResized(int w, int h){
+
 }
 
-void ofApp::touchUp(ofTouchEventArgs& touch)
-{
+//--------------------------------------------------------------
+void ofApp::gotMessage(ofMessage msg){
+
 }
 
-void ofApp::touchDoubleTap(ofTouchEventArgs& touch)
-{
-}
+//--------------------------------------------------------------
+void ofApp::dragEvent(ofDragInfo dragInfo){ 
 
-void ofApp::touchCancelled(ofTouchEventArgs& touch)
-{
-}
-
-void ofApp::windowResized(ofResizeEventArgs& window)
-{
-}
-
-void ofApp::dragged(ofDragInfo& dragged)
-{
-}
-
-void ofApp::messageReceived(ofMessage& message)
-{
 }

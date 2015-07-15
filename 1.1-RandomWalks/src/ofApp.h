@@ -1,33 +1,30 @@
 #pragma once
+#ifndef H_OFAPP
+#define H_OFAPP
 
 #include "ofMain.h"
+#include "RandomWalker.h"
 
-class ofApp : public ofBaseApp
-{
-  public:
-    void setup  ();
-    void update ();
-    void draw   ();
-    void exit   ();
+class ofApp : public ofBaseApp{
 
-    void keyPressed      (ofKeyEventArgs&);
-    void keyReleased     (ofKeyEventArgs&);
+	private:
+		RandomWalker *walker;
 
-    void mouseMoved      (ofMouseEventArgs&);
-    void mouseDragged    (ofMouseEventArgs&);
-    void mousePressed    (ofMouseEventArgs&);
-    void mouseReleased   (ofMouseEventArgs&);
-    void mouseScrolled   (ofMouseEventArgs&);
-    void mouseEntered    (ofMouseEventArgs&);
-    void mouseExited     (ofMouseEventArgs&);
+	public:
+		void setup();
+		void update();
+		void draw();
 
-    void touchDown       (ofTouchEventArgs&);
-    void touchMoved      (ofTouchEventArgs&);
-    void touchUp         (ofTouchEventArgs&);
-    void touchDoubleTap  (ofTouchEventArgs&);
-    void touchCancelled  (ofTouchEventArgs&);
-
-    void windowResized   (ofResizeEventArgs&);
-    void dragged         (ofDragInfo&);
-    void messageReceived (ofMessage&);
+		void keyPressed(int key);
+		void keyReleased(int key);
+		void mouseMoved(int x, int y );
+		void mouseDragged(int x, int y, int button);
+		void mousePressed(int x, int y, int button);
+		void mouseReleased(int x, int y, int button);
+		void windowResized(int w, int h);
+		void dragEvent(ofDragInfo dragInfo);
+		void gotMessage(ofMessage msg);
+		
 };
+
+#endif // H_OFAPP
