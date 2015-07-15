@@ -1,4 +1,4 @@
-# ofxNatureOfCode
+# ofNatureOfCode
 #### Nature Of Code Examples implemented using Openframeworks
 
 This repository holds some examples from Daniel Shiffmans excellent book [The Nature Of Code](http://natureofcode.com/) reimplemented using [Openframeworks](openframeworks.cc) (basically the [ofnode](https://github.com/ofnode) fork).
