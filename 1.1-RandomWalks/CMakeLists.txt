@@ -10,6 +10,7 @@ ofxaddon(../ofxGui)
 set(SOURCES
     src/main.cpp
     src/ofApp.cpp
+    src/RandomWalker.cpp
 )
 
 add_executable(
