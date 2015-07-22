@@ -2,3 +2,5 @@
 */build
 # binary directories
 */bin
+# CMake
+*/CMakeLists.txt.user
